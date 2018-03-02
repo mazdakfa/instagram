@@ -1,0 +1,47 @@
+{
+    "hello": {
+        "handlerName": "generated/indexController.hello",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "info": {
+        "handlerName": "generated/indexController.info",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "registerUser": {
+        "handlerName": "generated/AuthController.registerUser",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "login": {
+        "handlerName": "generated/AuthController.login",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "refreshLogin": {
+        "handlerName": "generated/AuthController.refreshLogin",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "forgotPassword": {
+        "handlerName": "generated/AuthController.forgotPassword",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "user.pictures": {
+        "handlerName": "generated/SharedImageController.getUserPics",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "all.pictures": {
+        "handlerName": "generated/SharedImageController.getAllPictures",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "new": {
+        "handlerName": "generated/SharedImageController.addPicture",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    }
+}

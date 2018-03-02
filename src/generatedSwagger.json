@@ -1,0 +1,439 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "-6",
+        "title": "Instagram"
+    },
+    "paths": {
+        "/hello": {
+            "post": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "just returns hello if user is logged In :)",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "post": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "returns app information",
+                        "schema": {
+                            "$ref": "#/definitions/AppInfoResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/registerUser": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.registerUser",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.login",
+                        "schema": {
+                            "$ref": "#/definitions/LoginUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/refreshLogin": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "refreshToken",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.refreshLogin",
+                        "schema": {
+                            "$ref": "#/definitions/LoginUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/forgotPassword": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.forgotPassword",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user.pictures": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SharedImageController.getUserPics",
+                        "schema": {
+                            "$ref": "#/definitions/SharedImageListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/all.pictures": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SharedImageController.getAllPictures",
+                        "schema": {
+                            "$ref": "#/definitions/SharedImageListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/new": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "imageUri",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SharedImageController.addPicture",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "FailedSuccessResponse": {
+            "properties": {
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "AppInfoResponse": {
+            "properties": {
+                "name": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "version": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "RegisterUserResponse": {
+            "properties": {
+                "userId": {
+                    "format": "id",
+                    "type": "string"
+                },
+                "email": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "accessToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "tokenType": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "scope": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "jti": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "LoginUserResponse": {
+            "properties": {
+                "accessToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "tokenType": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "scope": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "jti": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "UserInfoResponse": {
+            "properties": {
+                "userId": {
+                    "format": "id",
+                    "type": "string"
+                },
+                "fullName": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "email": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "imageUri": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "SharedImageResponse": {
+            "properties": {
+                "imageUri": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "description": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/definitions/UserInfoResponse"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "SharedImageListResponse": {
+            "properties": {
+                "images": {
+                    "format": "array",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SharedImageResponse"
+                    }
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
